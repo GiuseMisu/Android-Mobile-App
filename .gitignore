@@ -18,6 +18,16 @@ local.properties
 app/google-services.json
 *.keystore
 *.jks
+# Firebase Admin SDK service-account keys (full admin access — NEVER commit)
+serviceAccount.json
+**/serviceAccount*.json
+*-firebase-adminsdk-*.json
+# Demo seed media you may add locally
+backend/seed_assets/avatars/*
+backend/seed_assets/photos/*
+backend/seed_assets/audio/*
+!backend/seed_assets/**/.gitkeep
+!backend/seed_assets/README.md
 
 # Android Studio / IntelliJ IDEA (machine-specific)
 *.iml
