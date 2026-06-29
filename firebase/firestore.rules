@@ -1,0 +1,134 @@
+rules_version = '2';
+
+// WildTrail Firestore security rules.
+// Principle: any signed-in user can READ social content, but may only CREATE / UPDATE /
+// DELETE documents that belong to them. The one exception is the denormalized counters on
+// a hike (likesCount / averageRating / reviewCount), which any signed-in user may update so
+// that liking or reviewing someone else's hike keeps those numbers in sync without a backend.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isUser(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+    // True when the only fields that changed are the hike's denormalized counters.
+    function onlyCountersChanged() {
+      return request.resource.data.diff(resource.data).affectedKeys()
+        .hasOnly(['likesCount', 'averageRating', 'reviewCount']);
+    }
+    // True when the signed-in user owns the hike with the given id. Used so a hike owner can
+    // cascade-delete the reviews/comments/likes attached to their hike when they delete it.
+    function ownsHike(hikeId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/hikes/$(hikeId))
+        && get(/databases/$(database)/documents/hikes/$(hikeId)).data.creatorFirebaseUid == request.auth.uid;
+    }
+
+    // Profiles: anyone signed in can view; you can only write your own.
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow write: if isUser(uid);
+    }
+
+    // Hikes: signed-in users can read. Only the creator may create/edit/delete the hike;
+    // any signed-in user may update just the like/rating counters.
+    match /hikes/{hikeId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.creatorFirebaseUid == request.auth.uid;
+      allow delete: if signedIn()
+        && resource.data.creatorFirebaseUid == request.auth.uid;
+      allow update: if signedIn() && (
+        resource.data.creatorFirebaseUid == request.auth.uid
+        || onlyCountersChanged()
+      );
+    }
+
+    // Reviews: readable by all signed-in users; editable only by their author. Deletable by
+    // the author OR the owner of the hike it belongs to (so deleting a hike cascades).
+    match /reviews/{reviewId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.reviewerUid == request.auth.uid;
+      allow update: if signedIn()
+        && resource.data.reviewerUid == request.auth.uid;
+      allow delete: if signedIn() && (
+        resource.data.reviewerUid == request.auth.uid
+        || ownsHike(resource.data.hikeId)
+      );
+    }
+
+    // Comments: editable only by their author; deletable by the author OR the hike owner.
+    match /comments/{commentId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.authorUid == request.auth.uid;
+      allow update: if signedIn()
+        && resource.data.authorUid == request.auth.uid;
+      allow delete: if signedIn() && (
+        resource.data.authorUid == request.auth.uid
+        || ownsHike(resource.data.hikeId)
+      );
+    }
+
+    // Likes (doc id = "{uid}_{hikeId}"): you add/remove your own like; the hike owner may
+    // also remove likes on their hike (cascade on hike delete).
+    match /likes/{likeId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.userUid == request.auth.uid;
+      allow delete: if signedIn() && (
+        resource.data.userUid == request.auth.uid
+        || ownsHike(resource.data.hikeId)
+      );
+    }
+
+    // Follows (doc id = "{follower}_{followee}").
+    match /follows/{id} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.followerUid == request.auth.uid;
+      allow delete: if signedIn()
+        && resource.data.followerUid == request.auth.uid;
+    }
+
+    // Trails a user follows (doc id = "{uid}_{hikeId}").
+    match /followed_trails/{id} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.userUid == request.auth.uid;
+      allow delete: if signedIn()
+        && resource.data.userUid == request.auth.uid;
+    }
+
+    // Earned achievements (doc id = "{uid}_{achievementId}"): you can only write your own.
+    match /user_achievements/{id} {
+      allow read: if signedIn();
+      allow create, update: if signedIn()
+        && request.resource.data.userUid == request.auth.uid;
+      allow delete: if signedIn()
+        && resource.data.userUid == request.auth.uid;
+    }
+
+    // Achievement catalog: read-only to the app (managed from the console/admin tooling).
+    match /achievement_definitions/{id} {
+      allow read: if signedIn();
+      allow write: if false;
+    }
+
+    // Emergency contacts are private — only their owner can read or write them.
+    match /emergency_contacts/{id} {
+      allow read: if signedIn() && resource.data.userUid == request.auth.uid;
+      allow create: if signedIn()
+        && request.resource.data.userUid == request.auth.uid;
+      allow update, delete: if signedIn()
+        && resource.data.userUid == request.auth.uid;
+    }
+
+    // Anything not matched above is denied by default.
+  }
+}

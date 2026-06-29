@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Forest greens / earthy tones aligned with the hiking theme.
+         These are also reproduced in the Compose theme (ui/theme/Color.kt). -->
+    <color name="forest_primary">#2E5D3A</color>
+    <color name="forest_primary_dark">#16321F</color>
+    <color name="moss_secondary">#7DA66D</color>
+    <color name="trail_brown">#8B5E3C</color>
+    <color name="sky_tertiary">#4F8FBF</color>
+    <color name="surface_light">#F8F5F0</color>
+    <color name="surface_dark">#11130E</color>
+    <color name="error_red">#B00020</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>

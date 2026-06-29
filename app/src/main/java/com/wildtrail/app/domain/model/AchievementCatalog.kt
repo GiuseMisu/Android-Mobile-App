@@ -1,0 +1,118 @@
+package com.wildtrail.app.domain.model
+
+object AchievementCatalog {
+
+    val ALL: List<AchievementDefinition> = listOf(
+        AchievementDefinition(
+            achievementId = "distance_first_km",
+            name = "First Steps",
+            description = "Record your first kilometre.",
+            iconUrl = null,
+            xpReward = 20,
+            category = AchievementCategory.DISTANCE,
+            thresholdValue = 1f,
+        ),
+        AchievementDefinition(
+            achievementId = "distance_10_km",
+            name = "Day Hiker",
+            description = "Hike a cumulative 10 km.",
+            iconUrl = null,
+            xpReward = 50,
+            category = AchievementCategory.DISTANCE,
+            thresholdValue = 10f,
+        ),
+        AchievementDefinition(
+            achievementId = "distance_50_km",
+            name = "Trail Regular",
+            description = "Hike a cumulative 50 km.",
+            iconUrl = null,
+            xpReward = 100,
+            category = AchievementCategory.DISTANCE,
+            thresholdValue = 50f,
+        ),
+        AchievementDefinition(
+            achievementId = "distance_200_km",
+            name = "Long Hauler",
+            description = "Hike a cumulative 200 km.",
+            iconUrl = null,
+            xpReward = 250,
+            category = AchievementCategory.DISTANCE,
+            thresholdValue = 200f,
+        ),
+
+        AchievementDefinition(
+            achievementId = "elevation_500m",
+            name = "Hill Climber",
+            description = "Climb 500 m of elevation in a single hike.",
+            iconUrl = null,
+            xpReward = 75,
+            category = AchievementCategory.ELEVATION,
+            thresholdValue = 500f,
+        ),
+        AchievementDefinition(
+            achievementId = "elevation_1000m",
+            name = "Mountain Goat",
+            description = "Climb 1000 m of elevation in a single hike.",
+            iconUrl = null,
+            xpReward = 200,
+            category = AchievementCategory.ELEVATION,
+            thresholdValue = 1000f,
+        ),
+        AchievementDefinition(
+            achievementId = "elevation_2000m",
+            name = "Sky Walker",
+            description = "Climb 2000 m of elevation in a single hike.",
+            iconUrl = null,
+            xpReward = 400,
+            category = AchievementCategory.ELEVATION,
+            thresholdValue = 2000f,
+        ),
+
+        AchievementDefinition(
+            achievementId = "social_first_public",
+            name = "Going Public",
+            description = "Share your first public hike.",
+            iconUrl = null,
+            xpReward = 20,
+            category = AchievementCategory.SOCIAL,
+            thresholdValue = 1f,
+        ),
+        AchievementDefinition(
+            achievementId = "social_10_public",
+            name = "Community Voice",
+            description = "Share 10 public hikes.",
+            iconUrl = null,
+            xpReward = 100,
+            category = AchievementCategory.SOCIAL,
+            thresholdValue = 10f,
+        ),
+
+        AchievementDefinition(
+            achievementId = "streak_5_hikes",
+            name = "Getting Hooked",
+            description = "Complete 5 hikes.",
+            iconUrl = null,
+            xpReward = 40,
+            category = AchievementCategory.STREAK,
+            thresholdValue = 5f,
+        ),
+        AchievementDefinition(
+            achievementId = "streak_25_hikes",
+            name = "Trail Dedication",
+            description = "Complete 25 hikes.",
+            iconUrl = null,
+            xpReward = 150,
+            category = AchievementCategory.STREAK,
+            thresholdValue = 25f,
+        ),
+        AchievementDefinition(
+            achievementId = "streak_100_hikes",
+            name = "Trail Master",
+            description = "Complete 100 hikes.",
+            iconUrl = null,
+            xpReward = 500,
+            category = AchievementCategory.STREAK,
+            thresholdValue = 100f,
+        ),
+    )
+}

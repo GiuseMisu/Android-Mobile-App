@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">WildTrail</string>
+
+    <!-- Auth -->
+    <string name="auth_welcome">Welcome to WildTrail</string>
+    <string name="auth_tagline">Track. Discover. Share.</string>
+    <string name="auth_login">Log in</string>
+    <string name="auth_signup">Sign up</string>
+    <string name="auth_email">Email</string>
+    <string name="auth_password">Password</string>
+    <string name="auth_username">Username</string>
+    <string name="auth_have_account">Already have an account? Log in</string>
+    <string name="auth_no_account">No account yet? Sign up</string>
+
+    <!-- Bottom nav -->
+    <string name="nav_home">Home</string>
+    <string name="nav_explore">Explore</string>
+    <string name="nav_track">Track</string>
+    <string name="nav_social">Social</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Tracking -->
+    <string name="track_start">Start hike</string>
+    <string name="track_pause">Pause</string>
+    <string name="track_resume">Resume</string>
+    <string name="track_stop">Finish</string>
+    <string name="track_distance">Distance</string>
+    <string name="track_duration">Duration</string>
+    <string name="track_elevation">Elevation</string>
+    <string name="track_speed">Avg speed</string>
+    <string name="track_steps">Steps</string>
+
+    <!-- Generic -->
+    <string name="loading">Loading…</string>
+    <string name="offline_banner">You\'re offline — showing cached data</string>
+    <string name="error_generic">Something went wrong. Try again.</string>
+</resources>

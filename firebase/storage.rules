@@ -1,0 +1,36 @@
+rules_version = '2';
+
+// WildTrail Cloud Storage security rules.
+// Reads happen through tokenized download URLs (so viewers can load others' media), but
+// uploads/deletes require a signed-in user. Profile pictures are additionally scoped so a
+// user can only write their own file.
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Profile pictures live at profile_pictures/{uid}.jpg — only that user can write theirs.
+    match /profile_pictures/{fileName} {
+      allow read: if signedIn();
+      allow write: if signedIn() && fileName == request.auth.uid + '.jpg';
+    }
+
+    // Hike media: hike_media/{hikeId}/{file}. The hike doc may not exist yet at upload time,
+    // so ownership can't be checked here cheaply; require a signed-in user.
+    match /hike_media/{hikeId}/{fileName} {
+      allow read: if signedIn();
+      allow write: if signedIn();
+    }
+
+    // Review images: review_images/{reviewId}/{index}.jpg
+    match /review_images/{reviewId}/{fileName} {
+      allow read: if signedIn();
+      allow write: if signedIn();
+    }
+
+    // Everything else denied by default.
+  }
+}

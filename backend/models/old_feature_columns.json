@@ -1,0 +1,13 @@
+[
+  "xp_points",
+  "eta",
+  "past_hikes",
+  "avg_speed",
+  "lunghezza",
+  "elevation_gain",
+  "difficulty",
+  "surface_type_forest",
+  "surface_type_mixed",
+  "surface_type_mountain",
+  "surface_type_road"
+]

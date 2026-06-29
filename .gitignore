@@ -1,0 +1,41 @@
+# Built application files
+*.apk
+*.aab
+*.aar
+*.ap_
+*.dex
+
+# Gradle & build output (regenerated on every build — never commit)
+.gradle/
+build/
+app/build/
+/captures
+.externalNativeBuild/
+.cxx/
+
+# Local configuration & secrets — NEVER commit these
+local.properties
+app/google-services.json
+*.keystore
+*.jks
+
+# Android Studio / IntelliJ IDEA (machine-specific)
+*.iml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/deploymentTargetSelector.xml
+.idea/deploymentTargetDropDown.xml
+
+# Kotlin
+.kotlin/
+
+# OS files
+.DS_Store
+
+
+backend/data/synthetic_hike_dataset.csv
+api.py

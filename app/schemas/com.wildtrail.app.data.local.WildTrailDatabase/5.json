@@ -1,0 +1,892 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 5,
+    "identityHash": "cb1f56d025b51cb5c0aaad5afd8833cc",
+    "entities": [
+      {
+        "tableName": "users",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`firebaseUid` TEXT NOT NULL, `username` TEXT NOT NULL, `sex` TEXT, `dateOfBirth` INTEGER, `country` TEXT, `level` INTEGER NOT NULL, `xpPoints` INTEGER NOT NULL, `totalDistanceKm` REAL NOT NULL, `totalHikesCount` INTEGER NOT NULL, `profilePictureUrl` TEXT, `bio` TEXT, `emergencyContactNumber` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `lastActive` INTEGER NOT NULL, `isPublic` INTEGER NOT NULL, PRIMARY KEY(`firebaseUid`))",
+        "fields": [
+          {
+            "fieldPath": "firebaseUid",
+            "columnName": "firebaseUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sex",
+            "columnName": "sex",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dateOfBirth",
+            "columnName": "dateOfBirth",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "country",
+            "columnName": "country",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "xpPoints",
+            "columnName": "xpPoints",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalDistanceKm",
+            "columnName": "totalDistanceKm",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalHikesCount",
+            "columnName": "totalHikesCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "profilePictureUrl",
+            "columnName": "profilePictureUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "bio",
+            "columnName": "bio",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "emergencyContactNumber",
+            "columnName": "emergencyContactNumber",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastActive",
+            "columnName": "lastActive",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isPublic",
+            "columnName": "isPublic",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "firebaseUid"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "hike_logs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`hikeId` TEXT NOT NULL, `creatorFirebaseUid` TEXT NOT NULL, `creatorUsername` TEXT NOT NULL, `creatorProfilePictureUrl` TEXT, `workoutId` TEXT, `title` TEXT NOT NULL, `description` TEXT, `avgSpeedKmh` REAL NOT NULL, `stepCount` INTEGER NOT NULL, `caloriesBurned` INTEGER NOT NULL, `coverPhotoUrl` TEXT, `xpEarned` INTEGER NOT NULL, `likesCount` INTEGER NOT NULL, `surfaceType` TEXT NOT NULL, `lengthKm` REAL NOT NULL, `durationSeconds` INTEGER NOT NULL, `startedAt` INTEGER NOT NULL, `endedAt` INTEGER NOT NULL, `elevationGainMeters` INTEGER NOT NULL, `routeCoordinates` TEXT NOT NULL, `isPrivate` INTEGER NOT NULL, `difficultyLevel` INTEGER NOT NULL, `mudRisk` INTEGER NOT NULL, `pathClarity` INTEGER NOT NULL, `fatigueLevel` INTEGER NOT NULL, `animalEncounterRisk` INTEGER NOT NULL, `waterAvailability` INTEGER NOT NULL, `averageRating` REAL NOT NULL, `reviewCount` INTEGER NOT NULL, PRIMARY KEY(`hikeId`))",
+        "fields": [
+          {
+            "fieldPath": "hikeId",
+            "columnName": "hikeId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "creatorFirebaseUid",
+            "columnName": "creatorFirebaseUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "creatorUsername",
+            "columnName": "creatorUsername",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "creatorProfilePictureUrl",
+            "columnName": "creatorProfilePictureUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "workoutId",
+            "columnName": "workoutId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "avgSpeedKmh",
+            "columnName": "avgSpeedKmh",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stepCount",
+            "columnName": "stepCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caloriesBurned",
+            "columnName": "caloriesBurned",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coverPhotoUrl",
+            "columnName": "coverPhotoUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "xpEarned",
+            "columnName": "xpEarned",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "likesCount",
+            "columnName": "likesCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "surfaceType",
+            "columnName": "surfaceType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lengthKm",
+            "columnName": "lengthKm",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "durationSeconds",
+            "columnName": "durationSeconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startedAt",
+            "columnName": "startedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endedAt",
+            "columnName": "endedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "elevationGainMeters",
+            "columnName": "elevationGainMeters",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "routeCoordinates",
+            "columnName": "routeCoordinates",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isPrivate",
+            "columnName": "isPrivate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "difficultyLevel",
+            "columnName": "difficultyLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mudRisk",
+            "columnName": "mudRisk",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pathClarity",
+            "columnName": "pathClarity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fatigueLevel",
+            "columnName": "fatigueLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "animalEncounterRisk",
+            "columnName": "animalEncounterRisk",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "waterAvailability",
+            "columnName": "waterAvailability",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "averageRating",
+            "columnName": "averageRating",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reviewCount",
+            "columnName": "reviewCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "hikeId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_hike_logs_creatorFirebaseUid",
+            "unique": false,
+            "columnNames": [
+              "creatorFirebaseUid"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_hike_logs_creatorFirebaseUid` ON `${TABLE_NAME}` (`creatorFirebaseUid`)"
+          },
+          {
+            "name": "index_hike_logs_isPrivate",
+            "unique": false,
+            "columnNames": [
+              "isPrivate"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_hike_logs_isPrivate` ON `${TABLE_NAME}` (`isPrivate`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "trail_reviews",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`reviewId` TEXT NOT NULL, `reviewerUid` TEXT NOT NULL, `hikeId` TEXT NOT NULL, `overallRating` INTEGER NOT NULL, `fatigueLevel` INTEGER NOT NULL, `pathClarity` INTEGER NOT NULL, `difficultyLevel` INTEGER NOT NULL, `mudRisk` INTEGER NOT NULL, `animalEncounterRisk` INTEGER NOT NULL, `waterAvailability` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`reviewId`))",
+        "fields": [
+          {
+            "fieldPath": "reviewId",
+            "columnName": "reviewId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reviewerUid",
+            "columnName": "reviewerUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hikeId",
+            "columnName": "hikeId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "overallRating",
+            "columnName": "overallRating",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fatigueLevel",
+            "columnName": "fatigueLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pathClarity",
+            "columnName": "pathClarity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "difficultyLevel",
+            "columnName": "difficultyLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mudRisk",
+            "columnName": "mudRisk",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "animalEncounterRisk",
+            "columnName": "animalEncounterRisk",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "waterAvailability",
+            "columnName": "waterAvailability",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "reviewId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_trail_reviews_reviewerUid_hikeId",
+            "unique": true,
+            "columnNames": [
+              "reviewerUid",
+              "hikeId"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_trail_reviews_reviewerUid_hikeId` ON `${TABLE_NAME}` (`reviewerUid`, `hikeId`)"
+          },
+          {
+            "name": "index_trail_reviews_hikeId",
+            "unique": false,
+            "columnNames": [
+              "hikeId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_trail_reviews_hikeId` ON `${TABLE_NAME}` (`hikeId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "user_follows",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`followerUid` TEXT NOT NULL, `followeeUid` TEXT NOT NULL, `notifyOnNewHike` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`followerUid`, `followeeUid`))",
+        "fields": [
+          {
+            "fieldPath": "followerUid",
+            "columnName": "followerUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "followeeUid",
+            "columnName": "followeeUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notifyOnNewHike",
+            "columnName": "notifyOnNewHike",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "followerUid",
+            "followeeUid"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_user_follows_followeeUid",
+            "unique": false,
+            "columnNames": [
+              "followeeUid"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_user_follows_followeeUid` ON `${TABLE_NAME}` (`followeeUid`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "followed_trails",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`userUid` TEXT NOT NULL, `hikeId` TEXT NOT NULL, `notifyOnNewReview` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`userUid`, `hikeId`))",
+        "fields": [
+          {
+            "fieldPath": "userUid",
+            "columnName": "userUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hikeId",
+            "columnName": "hikeId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notifyOnNewReview",
+            "columnName": "notifyOnNewReview",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "userUid",
+            "hikeId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_followed_trails_hikeId",
+            "unique": false,
+            "columnNames": [
+              "hikeId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_followed_trails_hikeId` ON `${TABLE_NAME}` (`hikeId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "hike_comments",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`commentId` TEXT NOT NULL, `authorUid` TEXT NOT NULL, `hikeId` TEXT NOT NULL, `text` TEXT NOT NULL, `photoUrls` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`commentId`))",
+        "fields": [
+          {
+            "fieldPath": "commentId",
+            "columnName": "commentId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "authorUid",
+            "columnName": "authorUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hikeId",
+            "columnName": "hikeId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photoUrls",
+            "columnName": "photoUrls",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "commentId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_hike_comments_hikeId",
+            "unique": false,
+            "columnNames": [
+              "hikeId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_hike_comments_hikeId` ON `${TABLE_NAME}` (`hikeId`)"
+          },
+          {
+            "name": "index_hike_comments_authorUid",
+            "unique": false,
+            "columnNames": [
+              "authorUid"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_hike_comments_authorUid` ON `${TABLE_NAME}` (`authorUid`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "achievement_definitions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`achievementId` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `iconUrl` TEXT, `xpReward` INTEGER NOT NULL, `category` TEXT NOT NULL, `thresholdValue` REAL NOT NULL, PRIMARY KEY(`achievementId`))",
+        "fields": [
+          {
+            "fieldPath": "achievementId",
+            "columnName": "achievementId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "iconUrl",
+            "columnName": "iconUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "xpReward",
+            "columnName": "xpReward",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thresholdValue",
+            "columnName": "thresholdValue",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "achievementId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "user_achievements",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`userUid` TEXT NOT NULL, `achievementId` TEXT NOT NULL, `earnedAt` INTEGER NOT NULL, PRIMARY KEY(`userUid`, `achievementId`))",
+        "fields": [
+          {
+            "fieldPath": "userUid",
+            "columnName": "userUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "achievementId",
+            "columnName": "achievementId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "earnedAt",
+            "columnName": "earnedAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "userUid",
+            "achievementId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_user_achievements_achievementId",
+            "unique": false,
+            "columnNames": [
+              "achievementId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_user_achievements_achievementId` ON `${TABLE_NAME}` (`achievementId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "emergency_contacts",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`contactId` TEXT NOT NULL, `userUid` TEXT NOT NULL, `name` TEXT NOT NULL, `phoneNumber` TEXT NOT NULL, `relationship` TEXT, `isPrimary` INTEGER NOT NULL, `notifyOnFall` INTEGER NOT NULL, PRIMARY KEY(`contactId`))",
+        "fields": [
+          {
+            "fieldPath": "contactId",
+            "columnName": "contactId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userUid",
+            "columnName": "userUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "phoneNumber",
+            "columnName": "phoneNumber",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "relationship",
+            "columnName": "relationship",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isPrimary",
+            "columnName": "isPrimary",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notifyOnFall",
+            "columnName": "notifyOnFall",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "contactId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_emergency_contacts_userUid",
+            "unique": false,
+            "columnNames": [
+              "userUid"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_emergency_contacts_userUid` ON `${TABLE_NAME}` (`userUid`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "likes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`userUid` TEXT NOT NULL, `hikeId` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`userUid`, `hikeId`))",
+        "fields": [
+          {
+            "fieldPath": "userUid",
+            "columnName": "userUid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hikeId",
+            "columnName": "hikeId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "userUid",
+            "hikeId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_likes_hikeId",
+            "unique": false,
+            "columnNames": [
+              "hikeId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_likes_hikeId` ON `${TABLE_NAME}` (`hikeId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "weather_cache",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cacheId` INTEGER NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `fetchedAtEpochSec` INTEGER NOT NULL, `currentTemperatureC` REAL NOT NULL, `currentDescription` TEXT NOT NULL, `currentIconId` TEXT NOT NULL, `plus1hTemperatureC` REAL NOT NULL, `plus1hDescription` TEXT NOT NULL, `plus1hIconId` TEXT NOT NULL, `plus2hTemperatureC` REAL NOT NULL, `plus2hDescription` TEXT NOT NULL, `plus2hIconId` TEXT NOT NULL, PRIMARY KEY(`cacheId`))",
+        "fields": [
+          {
+            "fieldPath": "cacheId",
+            "columnName": "cacheId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fetchedAtEpochSec",
+            "columnName": "fetchedAtEpochSec",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentTemperatureC",
+            "columnName": "currentTemperatureC",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentDescription",
+            "columnName": "currentDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentIconId",
+            "columnName": "currentIconId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plus1hTemperatureC",
+            "columnName": "plus1hTemperatureC",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plus1hDescription",
+            "columnName": "plus1hDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plus1hIconId",
+            "columnName": "plus1hIconId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plus2hTemperatureC",
+            "columnName": "plus2hTemperatureC",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plus2hDescription",
+            "columnName": "plus2hDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plus2hIconId",
+            "columnName": "plus2hIconId",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "cacheId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cb1f56d025b51cb5c0aaad5afd8833cc')"
+    ]
+  }
+}

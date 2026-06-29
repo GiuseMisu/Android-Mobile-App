@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. Material3-flavoured "DayNight" so the system
+         picks light/dark automatically. The actual colours are applied at
+         runtime by the Compose theme — this XML theme just gives the activity
+         a sensible window background until Compose composes its first frame. -->
+    <style name="Theme.WildTrail" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@color/surface_light</item>
+    </style>
+
+    <!-- Splash screen theme: AndroidX SplashScreen support library hooks
+         windowSplashScreenBackground + windowSplashScreenAnimatedIcon. -->
+    <style name="Theme.WildTrail.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/forest_primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
+        <item name="postSplashScreenTheme">@style/Theme.WildTrail</item>
+    </style>
+
+</resources>
